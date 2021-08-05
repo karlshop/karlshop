@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+{% load carttags %}
+        <!-- ****** Checkout Area Start ****** -->
+        <div class="checkout_area section_padding_100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+                        <div class="order-details-confirmation">
+
+                            <div class="cart-page-heading">
+                                <h5>Buyer Details</h5>
+
+                            </div>
+
+                            <ul class="order-details-form mb-4">
+                                <li><span>Name</span> <span>{{Buyer.name}}</span></li>
+                                <li><span>Phone Number</span> <span>{{Buyer.phone}}</span></li>
+                                <li><span>Email</span> <span>{{Buyer.email}}</span></li>
+                                <li><span>Address Line1</span> <span>{{Buyer.addressline1}}</span></li>
+                                <li><span>Address Line2</span> <span>{{Buyer.addressline2}}</span></li>
+                                <li><span>Address Line3</span> <span>{{Buyer.addressline3}}</span></li>
+                                <li><span>City</span> <span>{{Buyer.city}}</span></li>
+                                <li><span>State</span> <span>{{Buyer.state}}</span></li>
+                                <li><span>Post Code</span> <span>{{Buyer.postcode}}</span></li>
+                            </ul>
+                            <a href="/buyerprofile/" class="btn karl-checkout-btn">Edit Billing Address or Personal Details</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+                        <div class="order-details-confirmation">
+                            <div class="cart-page-heading">
+                                {% for i in messages %}
+                                    <h1 style="color:red">{{i}}</h1>
+                                {% endfor %}
+                                <h5>Your Order</h5>
+                                <p>The Details</p>
+                            </div>
+                            <ul class="order-details-form mb-4">
+                                <li><span>Product</span> <span>Total</span></li>
+                                {% for i in Products %}
+                                <li><span>{{i.name}}</span> <span>{{request|calculateTotal:i.pid}}</span></li>
+                                {% endfor %}
+                                <li><span>Subtotal</span> <span>Rs {{Total}}</span></li>
+                                {% if Shipping %}
+                                <li><span>Shipping</span> <span>{{Shipping}}</span></li>
+                                {% else %}
+                                <li><span>Shipping</span> <span>{{Shipping}}</span></li>
+                                {% endif %}
+                                <li><span>Total</span> <span>Rs {{Final}}</span></li>
+                            </ul>
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="col-12 mb-3">
+                                        <label for="type">Payment Mode<span>*</span></label>
+                                        <select class="custom-select d-block w-100" id="type" name="mode">
+                                        <option value="cod">COD</option>
+                                        <option value="paypal">PayPal</option>
+                                    </select>
+                                    </div>
+                            <button class="btn karl-checkout-btn">Place Order</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ****** Checkout Area End ****** -->
+{% endblock %}

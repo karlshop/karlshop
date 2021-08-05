@@ -1,0 +1,134 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+        <!-- ****** Checkout Area Start ****** -->
+        <div class="checkout_area section_padding_100">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12 col-md-6">
+                        <div class="checkout_details_area mt-50 clearfix">
+
+                            <div class="cart-page-heading">
+                                <h5>Login</h5>
+                                <p>Already user</p>
+                            </div>
+
+                            <form action="/login/" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label for="uname">User Name</label>
+                                        <input type="text" class="form-control" id="uname" name="uname" value="">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" value="">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <button type="submit" class="btn btn-primary" style="display:block;width:100%">Login</button>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <a href="/forgetPassword/">Forget Password</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="checkout_details_area mt-50 clearfix">
+
+                            <div class="cart-page-heading">
+                                {% for i in messages %}
+                                <p class="text text-success">{{i}}</p>
+                                {% endfor %}
+                                <h5>Sign Up</h5>
+                                <p>New user</p>
+                            </div>
+
+                            <form action="/signup/" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label for="name">Name<span>*</span></label>
+                                        <input type="text" class="form-control" id="name" name="name">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="username">User Name<span>*</span></label>
+                                        <input type="text" class="form-control" id="username" name="username">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="pword">Password<span>*</span></label>
+                                        <input type="password" class="form-control" id="pword" name="pword">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="type">Account Type<span>*</span></label>
+                                        <select class="custom-select d-block w-100" id="type" name="type">
+                                        <option value="seller">Seller</option>
+                                        <option value="buyer">Buyer</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="addressline1">Address Line 1</label>
+                                        <input type="text" class="form-control" id="addressline1" name="addressline1">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="addressline2">Address Line 2</label>
+                                        <input type="text" class="form-control" id="addressline2"  name="addressline2">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="addressline3">Address Line 3</label>
+                                        <input type="text" class="form-control" id="addressline3"  name="addressline3">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="postcode">Postcode</label>
+                                        <input type="text" class="form-control" id="postcode" name="postcode" value="">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="city">Town/City</label>
+                                        <input type="text" class="form-control" id="city" name="city" value="">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="state">State</label>
+                                        <input type="text" class="form-control" id="state" name="state" value="">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="phone">Phone No</label>
+                                        <input type="number" class="form-control" id="phone" name="phone" min="10" value="">
+                                    </div>
+                                    <div class="col-12 mb-4">
+                                        <label for="email_address">Email Address <span>*</span></label>
+                                        <input type="email" class="form-control" id="email_address" name="email" value="">
+                                    </div>
+                                    <div class="col-12 mb-4">
+                                        <label for="pic">Image</label>
+                                        <input type="file" class="form-control" id="pic" name="pic" value="">
+                                    </div>
+<!--                                    <div class="col-12">-->
+<!--                                        <div class="custom-control custom-checkbox d-block mb-2">-->
+<!--                                            <input type="checkbox" class="custom-control-input" id="customCheck1">-->
+<!--                                            <label class="custom-control-label" for="customCheck1">Terms and conitions</label>-->
+<!--                                        </div>-->
+<!--                                        <div class="custom-control custom-checkbox d-block mb-2">-->
+<!--                                            <input type="checkbox" class="custom-control-input" id="customCheck2">-->
+<!--                                            <label class="custom-control-label" for="customCheck2">Create an accout</label>-->
+<!--                                        </div>-->
+<!--                                        <div class="custom-control custom-checkbox d-block">-->
+<!--                                            <input type="checkbox" class="custom-control-input" id="customCheck3">-->
+<!--                                            <label class="custom-control-label" for="customCheck3">Subscribe to our newsletter</label>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+                                     <div class="col-12 mb-3">
+                                        <button type="submit" class="btn btn-primary" style="display:block;width:100%">SignUp</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- ****** Checkout Area End ****** -->
+{% endblock %}

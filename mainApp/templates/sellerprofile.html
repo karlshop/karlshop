@@ -1,0 +1,173 @@
+{% extends 'index.html ' %}
+{% load static %}
+{% block body %}
+        <!-- <<<<<<<<<<<<<<<<<<<< Breadcumb Area Start <<<<<<<<<<<<<<<<<<<< -->
+        <div class="breadcumb_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <ol class="breadcrumb d-flex align-items-center">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Seller Profile</a></li>
+                            <li class="breadcrumb-item"><a href="#">{{User.username}}</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <<<<<<<<<<<<<<<<<<<< Breadcumb Area End <<<<<<<<<<<<<<<<<<<< -->
+
+        <!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area Start >>>>>>>>>>>>>>>>>>>>>>>>> -->
+        <section class="single_product_details_area section_padding_0_100">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-6 col-md-3">
+                        <div class="single_product_thumb">
+                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <a class="gallery_img" href="{{User.pic.url}}">
+                                        <img class="d-block w-100" src="{{User.pic.url}}" alt="First slide">
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-3 col-md-3">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <input type="text" name="name" id="name" value="{{User.name}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 col-md-3">
+                                    <label>Email Id</label>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <input type="email" name="email" id="email" value="{{User.email}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 col-md-3">
+                                    <label>Phone Number</label>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <input type="text" name="phone" id="phone" value="{{User.phone}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 col-md-3">
+                                    <label>Address Line 1</label>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <input type="text" name="addressline1" id="addressline1" value="{{User.addressline1}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 col-md-3">
+                                    <label>Address Line 2</label>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <input type="text" name="addressline2" id="addressline2" value="{{User.addressline2}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 col-md-3">
+                                    <label>Address Line 3</label>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <input type="text" name="addressline3" id="addressline3" value="{{User.addressline3}}">
+                                </div>
+                            </div>
+                                <div class="row">
+                                <div class="col-3 col-md-3">
+                                    <label>PostCode</label>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <input type="text" name="postcode" id="postcode" value="{{User.postcode}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 col-md-3">
+                                    <label>City</label>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <input type="text" name="city" id="city" value="{{User.city}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 col-md-3">
+                                    <label>State</label>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <input type="text" name="state" id="state" value="{{User.state}}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 col-md-3">
+                                    <label>Picture</label>
+                                </div>
+                                <div class="col-3 col-md-3">
+                                    <input type="file" name="pic" id="pic"">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="submit" class="btn btn-primary" style="display:block;width:100%">Update Information</button>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <a href="/addproduct/" class="btn btn-primary" style="display:block;width:100%">Add a Product</a>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </section>
+        <!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area End >>>>>>>>>>>>>>>>>>>>>>>>> -->
+<div class="cart_area section_padding_100 clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="cart-table clearfix">
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Discount</th>
+                                        <th>Final Price</th>
+                                        <th>IN Stock</th>
+                                        <th>SIZE</th>
+                                        <th>Color</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in Products %}
+                                    <tr>
+                                        <td class="cart_product_img d-flex align-items-center">
+                                            <a href="#"><img src="{{i.img1.url}}" alt="Product"></a>
+                                            <h6>{{i.name}}</h6>
+                                        </td>
+                                        <td class="price"><span>{{i.price}}</span></td>
+                                        <td class="price"><span>{{i.discount}}%</span></td>
+                                        <td class="price"><span>{{i.finalPrice}}</span></td>
+                                        <td class="price"><span>{{i.instock}}</span></td>
+                                        <td class="price"><span>{{i.size}}</span></td>
+                                        <td class="price"><span>{{i.color}}</span></td>
+                                        <td class="price"><span><a class="btn btn-warning" href="/editproduct/{{i.pid}}/">Edit</a></span></td>
+                                        <td class="price"><span><a class="btn btn-danger" href="/deleteproduct/{{i.pid}}/">Delete</a></span></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

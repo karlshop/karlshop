@@ -1,0 +1,119 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+        <!-- ****** Checkout Area Start ****** -->
+        <div class="checkout_area section_padding_100">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12 col-md-6">
+                        <div class="checkout_details_area mt-50 clearfix">
+
+                            <div class="cart-page-heading">
+                                <h5>Edit Product</h5>
+                            </div>
+
+                            <form action="#" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label for="company">Product Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" value="{{Product.name}}">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="company">Description</label>
+                                        <input type="text" class="form-control" id="description" name="description" value="{{Product.description}}">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="country">Main Category</label>
+                                        <select class="custom-select d-block w-100" id="mainCat" name="mainCat">
+                                            {% for i in mainCat %}
+                                            <option value={{i.mcid}}>{{i.name}}</option>
+                                            {% endfor %}
+                                    </select>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="country">Sub Category</label>
+                                        <select class="custom-select d-block w-100" id="subCat" name="subCat">
+                                            {% for i in subCat %}
+                                            <option value={{i.scid}}>{{i.name}}</option>
+                                            {% endfor %}
+                                    </select>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="country">Brand</label>
+                                        <select class="custom-select d-block w-100" id="brand" name="brand">
+                                            {% for i in brand %}
+                                            <option value={{i.bid}}>{{i.name}}</option>
+                                            {% endfor %}
+                                    </select>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="company">Price</label>
+                                        <input type="number" class="form-control" id="price" name="price" value="{{Product.price}}">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="company">Discount</label>
+                                        <input type="number" class="form-control" id="discount" name="discount" value="{{Product.discount}}">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="country">In Stock</label>
+                                        <select class="custom-select d-block w-100" id="stock" name="stock">
+                                            <option value="True">True</option>
+                                            <option value="False">False</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="country">SIZE</label>
+                                        <select class="custom-select d-block w-100" id="size" name="size">
+                                            <option value="XS">XS</option>
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                            <option value="XXL">XXL</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="country">Color</label>
+                                        <select class="custom-select d-block w-100" id="color" name="color">
+                                            <option value="Red">Red</option>
+                                            <option value="Black">Black</option>
+                                            <option value="White">White</option>
+                                            <option value="Blue">Blue</option>
+                                            <option value="Yellow">Yellow</option>
+                                            <option value="Pink">Pink</option>
+                                            <option value="Hot Pink">Hot Pink</option>
+                                            <option value="Green">Green</option>
+                                            <option value="Sky Blue">Sky Blue</option>
+                                            <option value="Orange">Orange</option>
+                                    </select>
+                                    </div>
+                                     <div class="col-12 mb-3">
+                                        <label for="company">Image1</label>
+                                        <input type="file" class="form-control" id="img1" name="img1" value="">
+                                    </div>
+                                     <div class="col-12 mb-3">
+                                        <label for="company">Image2</label>
+                                        <input type="file" class="form-control" id="img2" name="img2" value="">
+                                    </div>
+                                     <div class="col-12 mb-3">
+                                        <label for="company">Image3</label>
+                                        <input type="file" class="form-control" id="img3" name="img3" value="">
+                                    </div>
+                                     <div class="col-12 mb-3">
+                                        <label for="company">Image4</label>
+                                        <input type="file" class="form-control" id="img4" name="img4" value="">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <button class="btn btn-primary" style="display:block;width:100%" type="submit">Proceed</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ****** Checkout Area End ****** -->
+{% endblock %}

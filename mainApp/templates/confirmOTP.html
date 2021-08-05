@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+        <!-- ****** Checkout Area Start ****** -->
+        <div class="checkout_area section_padding_100">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12 col-md-12">
+                        <div class="checkout_details_area mt-50 clearfix">
+
+                            <div class="cart-page-heading">
+                                <h5>Forget Password</h5>
+                                <p>Enter OTP which is Sent on Your Email</p>
+                            </div>
+                            {% for i in messages %}
+                            <p>{{i}}</p>
+                            {% endfor %}
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <label for="otp">OTP</label>
+                                        <input type="number" class="form-control" id="otp" name="otp" value="">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <button type="submit" class="btn btn-primary" style="display:block;width:100%">Submit OTP</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ****** Checkout Area End ****** -->
+{% endblock %}
